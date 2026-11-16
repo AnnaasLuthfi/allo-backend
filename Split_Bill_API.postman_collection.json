@@ -1,0 +1,297 @@
+{
+	"info": {
+		"_postman_id": "a82b947c-3f59-4b1a-963a-874254823199",
+		"name": "Split Bill API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Group",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Trip Bali\",\n  \"participants\": [\"Alice\", \"Bob\", \"Charlie\"]\n}"
+				},
+				"url": {
+					"raw": "http://localhost:4110/api/groups",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4110",
+					"path": [
+						"api",
+						"groups"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Groups",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4110/api/groups",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4110",
+					"path": [
+						"api",
+						"groups"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Group by ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4110/api/groups/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4110",
+					"path": [
+						"api",
+						"groups",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Expense - Equal",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"description\": \"Villa\",\n  \"amount\": 300000,\n  \"paidBy\": \"Alice\",\n  \"splitType\": \"EQUAL\",\n  \"category\": \"ACCOMMODATION\",\n  \"participants\": [\"Alice\", \"Bob\", \"Charlie\"]\n}"
+				},
+				"url": {
+					"raw": "http://localhost:4110/api/groups/1/expenses",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4110",
+					"path": [
+						"api",
+						"groups",
+						"1",
+						"expenses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Expense - Exact",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"description\": \"Makan Malam\",\n  \"amount\": 60000,\n  \"paidBy\": \"Bob\",\n  \"splitType\": \"EXACT\",\n  \"category\": \"FOOD\",\n  \"customShares\": [\n    {\n      \"participantName\": \"Bob\",\n      \"amount\": 25000\n    },\n    {\n      \"participantName\": \"Charlie\",\n      \"amount\": 35000\n    }\n  ]\n}"
+				},
+				"url": {
+					"raw": "http://localhost:4110/api/groups/1/expenses",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4110",
+					"path": [
+						"api",
+						"groups",
+						"1",
+						"expenses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Expense - Percentage",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"description\": \"Sewa Mobil\",\n  \"amount\": 100000,\n  \"paidBy\": \"Alice\",\n  \"splitType\": \"PERCENTAGE\",\n  \"category\": \"TRANSPORTATION\",\n  \"customShares\": [\n    {\n      \"participantName\": \"Alice\",\n      \"percentage\": 50\n    },\n    {\n      \"participantName\": \"Bob\",\n      \"percentage\": 30\n    },\n    {\n      \"participantName\": \"Charlie\",\n      \"percentage\": 20\n    }\n  ]\n}"
+				},
+				"url": {
+					"raw": "http://localhost:4110/api/groups/1/expenses",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4110",
+					"path": [
+						"api",
+						"groups",
+						"1",
+						"expenses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Expenses",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4110/api/groups/1/expenses",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4110",
+					"path": [
+						"api",
+						"groups",
+						"1",
+						"expenses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Record Payment",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"paidBy\": \"Charlie\",\n  \"paidTo\": \"Alice\",\n  \"amount\": 50000,\n  \"notes\": \"Bayar villa\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:4110/api/groups/1/payments",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4110",
+					"path": [
+						"api",
+						"groups",
+						"1",
+						"payments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Payments",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4110/api/groups/1/payments",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4110",
+					"path": [
+						"api",
+						"groups",
+						"1",
+						"payments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Settlement",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4110/api/groups/1/settlement",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4110",
+					"path": [
+						"api",
+						"groups",
+						"1",
+						"settlement"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Settlement - Username",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4110/api/groups/1/settlement?githubUsername=allobankcandidate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4110",
+					"path": [
+						"api",
+						"groups",
+						"1",
+						"settlement"
+					],
+					"query": [
+						{
+							"key": "githubUsername",
+							"value": "allobankcandidate"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
